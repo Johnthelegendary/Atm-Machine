@@ -1,5 +1,5 @@
-After Clone/Downloading The Project and Extract The "atm_machine.py" file and Run it on Your Python 3 environment
-Your Personal Details to Note:
+After Cloning/Downloading The Project, Extract The "atm_machine.py" file and Run it on Your Python 3 environment
+These are Your Personal Details to Note:
 1. Your Atm Pin is 1234
 2. Your Account Balance is 23500 Naira
 3. Your Account Type is Current Account
