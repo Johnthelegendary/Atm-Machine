@@ -37,12 +37,12 @@ def enter_pin():
 
 
 def task():
-    global enter_sav_acc_num, enter_curr_acc_num, amount, all_good
+    global enter_sav_acc_num, enter_curr_acc_num, amount, all_good, balance
     the_choice = input(
         "\nWhat will You Like To Do?\n Type \"A\" To Check Balance\n Type \"B\" To Withdraw\n Type \"C\" To Transfer\n "
         "Type \"D\" To Do Nothing Else: ")
     if the_choice in "A,a":
-        print("\nYour Balance is", balance, " Naira")
+        print("\nYour Balance is", f'{balance:,}', " Naira")
         task()
     elif the_choice in "B, b":
         select_acc_type = input(
@@ -56,9 +56,10 @@ def task():
                 amount = int(input("\nHow Much Will You Like To Withdraw? "))
                 if amount < balance:
                     print("\n   Transaction Successful\n      Take Your Cash!\n")
+                    balance -= amount
                     task()
                 elif amount > balance:
-                    print("\n     Insufficient Fund!\n Your Balance is", balance, " Naira")
+                    print("\n     Insufficient Fund!\n Your Balance is", f'{balance:,}', " Naira")
                     task()
                 break
             except:
@@ -87,15 +88,17 @@ def task():
                             print("\nInvalid Input, Try Again")
                             all_good = True
                     confirmation = input(
-                        "Are You Sure You Want To Transfer " + str(amount) + " Naira To " + str(enter_sav_acc_num) + " ? \n Type \"Y\" To Confirm\n Type \"N\" To Cancel: ")
+                        "Are You Sure You Want To Transfer " + str(amount) + " Naira To " + str(
+                            enter_sav_acc_num) + " ? \n Type \"Y\" To Confirm\n Type \"N\" To Cancel: ")
                     if confirmation in "Y,y":
                         enter_sav_acc_num = str(enter_sav_acc_num)
                         amount = int(amount)
                         if amount < balance:
                             print("\nTransfer Successful!")
+                            balance -= amount
                             task()
                         elif amount > balance:
-                            print("\n   Insufficient Fund!\n Your Balance is", balance, " Naira")
+                            print("\n   Insufficient Fund!\n Your Balance is", f'{balance:,}', " Naira")
                             task()
                     elif confirmation in "N, n":
                         task()
@@ -113,15 +116,17 @@ def task():
                             all_good = True
                     confirmation = input(
                         "\nAre You Sure You Want To Transfer " + str(
-                            amount) + " Naira To " + str(enter_curr_acc_num) + " ? \n Type \"Y\" To Confirm\n Type \"N\" To Cancel: ")
+                            amount) + " Naira To " + str(
+                            enter_curr_acc_num) + " ? \n Type \"Y\" To Confirm\n Type \"N\" To Cancel: ")
                     if confirmation in "Y,y":
                         enter_curr_acc_num = str(enter_curr_acc_num)
                         amount = int(amount)
                         if amount < balance:
                             print("\nTransfer Successful!")
+                            balance -= amount
                             task()
                         elif amount > balance:
-                            print("\n    Insufficient Fund!\n Your Balance is", balance, " Naira")
+                            print("\n    Insufficient Fund!\n Your Balance is", f'{balance:,}', " Naira")
                             task()
                     elif confirmation in "N, n":
                         task()
